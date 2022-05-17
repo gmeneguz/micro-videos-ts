@@ -8,7 +8,7 @@ Open in vscode with Remote Container plugin and then:
 
 ```
 npm i
-npm run-dev
+npm run dev
 ```
 
 ## Tests
