@@ -25,5 +25,3 @@ export namespace CategoryRepository {
     sortableFields: string[];
   }
 }
-
-export default CategoryRepository;
