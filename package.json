@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "ts-node",
     "tsc": "tsc",
+    "tsc:check": "npm run tsc -- --noEmit",
     "tsc:clean": "rm tsconfig.tsbuildinfo",
-    "test": "jest"
+    "test": "jest",
+    "test:cov": "npm run test -- --coverage"
   },
   "keywords": [],
   "author": "",

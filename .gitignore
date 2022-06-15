@@ -2,3 +2,5 @@
 node_modules/
 tsconfig.tsbuildinfo
 .devcontainer/zsh_history/.zsh_history
+
+__coverage
