@@ -13,7 +13,8 @@
     "tsc:check": "npm run tsc -- --noEmit",
     "tsc:clean": "rm tsconfig.tsbuildinfo",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage"
+    "test:cov": "npm run test -- --coverage",
+    "create-index": "npx create-ts-index ./src/*/application ./src/*/infra ./src/*/domain -i '*.spec.ts' -b"
   },
   "keywords": [],
   "author": "",
