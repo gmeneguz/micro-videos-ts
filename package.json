@@ -1,37 +1,26 @@
 {
-  "name": "micro-videos",
-  "version": "1.0.0",
-  "description": "Video catalog admin",
+  "name": "micro-videos-ts",
+  "version": "0.0.1",
+  "description": "This repo contains the code related to the catalogue admin api for the project.",
   "main": "index.js",
-  "imports": {
-    "#seedwork/*": "./dist/@seedwork/*.js",
-    "#category/*": "./dist/@category/*.js"
-  },
   "scripts": {
-    "dev": "ts-node",
-    "tsc": "tsc",
-    "tsc:check": "npm run tsc -- --noEmit",
-    "tsc:clean": "rm tsconfig.tsbuildinfo",
-    "test": "jest",
-    "test:cov": "npm run test -- --coverage",
-    "create-index": "npx create-ts-index ./src/*/application ./src/*/infra ./src/*/domain -i '*.spec.ts' -b"
+    "build:core:w": "npm run build:w -w @fc/micro-videos",
+    "prestart:dev": "npm run build -w @fc/micro-videos",
+    "start:dev": "npm run build:core:w & npm run start:dev -w nestjs",
+    "test": "jest"
   },
-  "keywords": [],
+  "workspaces": [
+    "./packages/@core",
+    "./packages/nestjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmeneguz/micro-videos-ts.git"
+  },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@swc/core": "^1.2.159",
-    "@swc/jest": "^0.2.20",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^14.14.31",
-    "@types/uuid": "^8.3.4",
-    "jest": "^27.5.1",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.2",
-    "typescript-transform-paths": "^3.3.1"
+  "bugs": {
+    "url": "https://github.com/gmeneguz/micro-videos-ts/issues"
   },
-  "dependencies": {
-    "class-validator": "^0.13.2",
-    "uuid": "^8.3.2"
-  }
+  "homepage": "https://github.com/gmeneguz/micro-videos-ts#readme"
 }
