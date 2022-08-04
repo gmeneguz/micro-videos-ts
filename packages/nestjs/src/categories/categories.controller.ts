@@ -1,50 +1,71 @@
 import {
   CreateCategoryUseCase,
+  DeleteCategoryUseCase,
+  GetCategoryUseCase,
   ListCategoryUseCase,
+  UpdateCategoryUseCase,
 } from '@fc/micro-videos/category/application';
 import {
   Controller,
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Inject,
+  Put,
+  HttpCode,
+  Query,
 } from '@nestjs/common';
-import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { SearchCategoryDto } from './dto/search-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 @Controller('categories')
 export class CategoriesController {
-  @Inject(CategoriesService)
-  private readonly categoriesService: CategoriesService;
+  @Inject(CreateCategoryUseCase.UseCase)
+  private createUseCase: CreateCategoryUseCase.UseCase;
+
+  @Inject(ListCategoryUseCase.UseCase)
+  private listUseCase: ListCategoryUseCase.UseCase;
+
+  @Inject(GetCategoryUseCase.UseCase)
+  private getUseCase: GetCategoryUseCase.UseCase;
+
+  @Inject(UpdateCategoryUseCase.UseCase)
+  private updateUseCase: UpdateCategoryUseCase.UseCase;
+
+  @Inject(DeleteCategoryUseCase.UseCase)
+  private deleteUseCase: DeleteCategoryUseCase.UseCase;
 
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesService.create({ name: 'gggg' });
+    return this.createUseCase.execute(createCategoryDto);
   }
 
   @Get()
-  findAll() {
-    return this.categoriesService.search({});
+  search(@Query() searchParams: SearchCategoryDto) {
+    return this.listUseCase.execute(searchParams);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.categoriesService.findOne(+id);
+    return this.getUseCase.execute({ id });
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
-    return this.categoriesService.update(+id, updateCategoryDto);
+    return this.updateUseCase.execute({
+      id,
+      ...updateCategoryDto,
+    });
   }
 
+  @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.categoriesService.remove(+id);
+    return this.deleteUseCase.execute({ id });
   }
 }
