@@ -4,5 +4,10 @@
  */
 
 export default {
-  projects: ["<rootDir>/packages/@core", "<rootDir>/packages/nestjs"],
+  projects: ['<rootDir>/packages/@core', '<rootDir>/packages/nestjs'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
 };

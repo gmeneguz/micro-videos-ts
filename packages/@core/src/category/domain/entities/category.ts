@@ -1,7 +1,7 @@
-import { UniqueEntityId } from "../../../@seedwork/domain/value-objects/unique-entity-id.vo";
-import Entity from "../../../@seedwork/domain/entity/entity";
-import CategiryValidatorFactory from "../validators/category.validator";
-import { EntityValidationError } from "../../../@seedwork/errors/validation-error";
+import { UniqueEntityId } from '../../../@seedwork/domain/value-objects/unique-entity-id.vo';
+import Entity from '../../../@seedwork/domain/entity/entity';
+import CategiryValidatorFactory from '../validators/category.validator';
+import { EntityValidationError } from '../../../@seedwork/errors/validation-error';
 export interface CategoryProps {
   name: string;
   description?: string;
@@ -9,7 +9,10 @@ export interface CategoryProps {
   created_at?: Date;
 }
 export class Category extends Entity<CategoryProps> {
-  constructor(public readonly props: CategoryProps, id?: UniqueEntityId) {
+  constructor(
+    public readonly props: CategoryProps,
+    id?: UniqueEntityId | string,
+  ) {
     Category.validate(props);
     super(props, id);
     this.props.is_active = this.props.is_active ?? true;
@@ -38,7 +41,7 @@ export class Category extends Entity<CategoryProps> {
   get created_at(): Date | undefined {
     return this.props.created_at;
   }
-  update({ name, description }: Pick<Category, "name" | "description">) {
+  update({ name, description }: Pick<Category, 'name' | 'description'>) {
     Category.validate({ name, description });
     this.props.name = name;
     this.description = description;
@@ -53,7 +56,7 @@ export class Category extends Entity<CategoryProps> {
   //   ValidatorRules.values(props.is_active, "is_active").boolean();
   // }
 
-  static validate(props: Omit<CategoryProps, "id" | "created_at">) {
+  static validate(props: Omit<CategoryProps, 'id' | 'created_at'>) {
     const validator = CategiryValidatorFactory.create();
     const isValid = validator.validate(props);
     if (!isValid) {

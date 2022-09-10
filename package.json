@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/gmeneguz/micro-videos-ts/issues"
   },
-  "homepage": "https://github.com/gmeneguz/micro-videos-ts#readme"
+  "homepage": "https://github.com/gmeneguz/micro-videos-ts#readme",
+  "devDependencies": {
+    "@types/chance": "^1.1.3"
+  }
 }
