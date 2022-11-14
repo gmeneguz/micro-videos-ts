@@ -1,7 +1,7 @@
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 import { DataType, Sequelize } from 'sequelize-typescript';
-import { CategoryModel } from './category-model';
-
+import { CategorySequelize } from './';
+const { CategoryModel } = CategorySequelize;
 describe('CAtegoryModel Unit Tests', () => {
   setupSequelizeForTesting([CategoryModel]);
   test('mapping props', () => {

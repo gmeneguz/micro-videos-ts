@@ -1,4 +1,4 @@
-import { ModelCtor, Sequelize, SequelizeOptions } from 'sequelize-typescript';
+import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 
 type SequelizeOptionsCfg = Omit<SequelizeOptions, 'models'>;
 type SequelizeModels = SequelizeOptions['models'];

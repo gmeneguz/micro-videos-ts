@@ -1,5 +1,5 @@
 import {ListCategoryUseCase} from "../list-category.use-case.ts";
-import CategoryInMemoryRepository from "../../../infra/repository/category-in-memory.repository";
+import CategoryInMemoryRepository from '../../../infra/db/in-memory/category-in-memory.repository';
 import { Category } from "#category/domain/entities/category";
 import { CategoryRepository } from "../../../domain/repository/category.repository";
 describe("ListCategoryUseCase Tests", () => {
