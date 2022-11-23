@@ -4,3 +4,4 @@ tsconfig.tsbuildinfo
 .devcontainer/zsh_history/.zsh_history
 dist/
 __coverage
+*.env

@@ -1,11 +1,12 @@
+import { configTest as config } from '#seedwork/infra/config';
 import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 
 type SequelizeOptionsCfg = Omit<SequelizeOptions, 'models'>;
 type SequelizeModels = SequelizeOptions['models'];
 const defaultOptions: SequelizeOptionsCfg = {
-  dialect: 'sqlite',
-  host: ':memory:',
-  logging: false,
+  dialect: config.db.dialect,
+  host: config.db.host,
+  logging: config.db.logging,
 };
 
 export function setupSequelizeForTesting(
