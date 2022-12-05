@@ -14,7 +14,8 @@ export class Category extends Entity<CategoryProps> {
     id?: UniqueEntityId | string,
   ) {
     Category.validate(props);
-    super(props, id);
+    const uniqueEntityId = typeof id === 'string' ? new UniqueEntityId(id) : id;
+    super(props, uniqueEntityId);
     this.props.is_active = this.props.is_active ?? true;
     this.props.description = this.props.description ?? null;
     this.props.created_at = this.props.created_at ?? new Date();

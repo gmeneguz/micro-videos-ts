@@ -1,6 +1,6 @@
 import { GetCategoryUseCase } from '../../get-category.use-case';
 import NotFoundError from '../../../../../@seedwork/errors/not-found-error';
-import { CategorySequelize } from '#category/infra';
+import { CategorySequelize } from '#category/infra/db';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 const { CategorySequelizeRepository, CategoryModel } = CategorySequelize;
 describe('GetCategoryUseCase Integration Tests', () => {

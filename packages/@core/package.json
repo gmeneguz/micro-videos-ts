@@ -30,7 +30,7 @@
     "build:w": "tsc -b ./tsconfig.json -w",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
-    "create-index": "npx create-ts-index ./src/*/application ./src/*/infra ./src/*/domain ./src/*/errors  -i '*.spec.ts' -b"
+    "create-index": "npx create-ts-index ./src/*/application ./src/*/infra ./src/*/domain ./src/*/errors  -i '*.spec.ts' -e 'tests' -b"
   },
   "keywords": [],
   "author": "",

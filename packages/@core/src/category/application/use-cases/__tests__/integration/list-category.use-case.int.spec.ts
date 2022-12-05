@@ -1,5 +1,5 @@
 import { ListCategoryUseCase } from '../../list-category.use-case.ts';
-import { CategorySequelize } from '#category/infra';
+import { CategorySequelize } from '#category/infra/db';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 const { CategorySequelizeRepository, CategoryModel } = CategorySequelize;
 

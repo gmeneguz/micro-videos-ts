@@ -1,6 +1,5 @@
 import { CreateCategoryUseCase } from '../../create-category.use-case';
-import CategoryInMemoryRepository from '../../../../infra/db/in-memory/category-in-memory.repository';
-import { CategorySequelize } from '#category/infra';
+import { CategorySequelize } from '#category/infra/db/sequelize';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 const { CategoryModel, CategorySequelizeRepository } = CategorySequelize;
 
