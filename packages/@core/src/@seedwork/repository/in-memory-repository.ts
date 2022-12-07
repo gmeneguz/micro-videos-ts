@@ -6,7 +6,7 @@ import {
   SearchParams,
   SearchResult,
 } from "./repository-contracts";
-import NotFoundError from "../errors/not-found-error";
+import { NotFoundError } from '../errors';
 
 export abstract class InMemoryRepository<E extends Entity<any>>
   implements RepositoryInterface<E>

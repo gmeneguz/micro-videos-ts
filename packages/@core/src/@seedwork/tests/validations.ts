@@ -1,6 +1,6 @@
 import ClassValidatorFields from "../validators/class-validator-fields";
 import { FieldsErrors } from "../validators/validator-fields-interface";
-import { EntityValidationError } from "@seedwork/errors/validation-error";
+import { EntityValidationError } from '../errors/validation-error';
 const { objectContaining } = expect;
 
 type Expected =

@@ -1,6 +1,6 @@
 import { DeleteCategoryUseCase } from '../../delete-category.use-case';
 import NotFoundError from '../../../../../@seedwork/errors/not-found-error';
-import { CategorySequelize } from '#category/infra/db/sequelize';
+import { CategorySequelize } from '#category/infra/db/sequelize/category-sequelize';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 const { CategorySequelizeRepository, CategoryModel } = CategorySequelize;
 describe('DeleteCategoryUseCase Integration Tests', () => {

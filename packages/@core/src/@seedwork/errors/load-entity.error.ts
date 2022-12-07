@@ -1,4 +1,4 @@
-import { FieldsErrors } from '#seedwork/validators/validator-fields-interface';
+import { FieldsErrors } from '#seedwork/validators';
 
 export class LoadEntityError extends Error {
   constructor(public error: FieldsErrors, message?: string) {

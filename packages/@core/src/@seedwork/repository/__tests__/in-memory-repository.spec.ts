@@ -1,6 +1,6 @@
 import Entity from "../../domain/entity/entity";
 import { UniqueEntityId } from "../../domain/value-objects/unique-entity-id.vo";
-import NotFoundError from "../../errors/not-found-error";
+import { NotFoundError } from '../../errors';
 import { InMemoryRepository } from "../in-memory-repository";
 
 interface ItemProps {

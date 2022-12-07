@@ -1,7 +1,7 @@
 import { Category } from '#category/domain';
 import { LoadEntityError } from '#seedwork/errors';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
-import { CategorySequelize } from './';
+import { CategorySequelize } from './category-sequelize';
 const { CategoryModel, CategoryMapper } = CategorySequelize;
 
 describe('CategryModelMapper Unit Tests', () => {

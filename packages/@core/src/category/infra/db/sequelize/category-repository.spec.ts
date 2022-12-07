@@ -1,9 +1,9 @@
 import { Category, CategoryRepository } from '#category/domain';
 import { UniqueEntityId } from '#seedwork/domain';
-import NotFoundError from '#seedwork/errors/not-found-error';
+import { NotFoundError } from '#seedwork/errors';
 import { setupSequelizeForTesting } from '#seedwork/infra/testing/helpers/db';
 import _chance from 'chance';
-import { CategorySequelize } from './';
+import { CategorySequelize } from './category-sequelize';
 
 const { CategoryModel, CategoryMapper, CategorySequelizeRepository } =
   CategorySequelize;

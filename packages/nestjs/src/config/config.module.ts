@@ -1,4 +1,3 @@
-/// <reference path="../../@types/joi.d.ts" />
 import { DynamicModule, Module } from '@nestjs/common';
 import {
   ConfigModule as NestConfigModule,
@@ -15,7 +14,7 @@ type CONFIG_DB_SCHEMA_TYPE = {
   DB_PASSWORD?: string;
   DB_PORT?: number;
   DB_LOGGING: boolean;
-  DB_AUTO_LOAD_MODULES: boolean;
+  DB_AUTO_LOAD_MODELS: boolean;
 };
 
 export type CONFIG_SCHEMA_TYPE = CONFIG_DB_SCHEMA_TYPE;
@@ -44,26 +43,28 @@ export const CONFIG_DB_SCHEMA: Joi.StrictSchemaMap<CONFIG_DB_SCHEMA_TYPE> = {
     otherwise: Joi.number().required(),
   }),
   DB_LOGGING: Joi.boolean().required(),
-  DB_AUTO_LOAD_MODULES: Joi.boolean().required(),
+  DB_AUTO_LOAD_MODELS: Joi.boolean().required(),
 };
 
 @Module({})
 export class ConfigModule extends NestConfigModule {
   static forRoot(options?: ConfigModuleOptions): DynamicModule {
-    const envFilePath = Array.isArray(options?.envFilePath)
+    const { envFilePath, ...otherOptions } = options;
+    const envFile = Array.isArray(options?.envFilePath)
       ? options.envFilePath
       : [options?.envFilePath];
 
     return super.forRoot({
+      isGlobal: true,
       envFilePath: [
-        ...envFilePath,
+        ...envFile,
         join(__dirname, `../envs/.${process.env.NODE_ENV}.env`),
         join(__dirname, '../envs/.env'),
       ],
       validationSchema: Joi.object({
         ...CONFIG_DB_SCHEMA,
       }),
-      ...options,
+      ...otherOptions,
     });
   }
 }
